@@ -1,16 +1,12 @@
-# todo
+# TodoAPP
 
-A new Flutter project.
+## Desafio
 
-## Getting Started
+Criar um Todo App consumindo a API da [Crud Crud](https://crudcrud.com/)
 
-This project is a starting point for a Flutter application.
+### Referências
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[Atividade Entregável Notion](https://proz-tecnologia.notion.site/proz-tecnologia/Atividade-Entreg-vel-Turma-01-e855276682b3438ba89a95be9a9a26ab)
+[Using Sliver](https://docs.flutter.dev/development/ui/advanced/slivers)
+[Medium - Slivers](https://medium.com/flutter/slivers-demystified-6ff68ab0296f)
+[cookBook - slivers](https://dartpad.dev/workshops.html?webserver=https://dartpad-workshops-io2021.web.app/getting_started_with_slivers)
