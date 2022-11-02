@@ -2,16 +2,16 @@ import 'dart:convert';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class TodoModel {
-  final int id;
+  final String? id;
   final String title;
   final String description;
-  final bool isDone;
+  final bool? isDone;
 
   TodoModel({
-    required this.id,
+    this.id,
     required this.title,
     required this.description,
-    required this.isDone,
+    this.isDone = false,
   });
 
   Map<String, dynamic> toMap() {
@@ -25,10 +25,10 @@ class TodoModel {
 
   factory TodoModel.fromMap(Map<String, dynamic> map) {
     return TodoModel(
-      id: map['id'] as int,
+      id: map['_id'],
       title: map['title'] as String,
       description: map['description'] as String,
-      isDone: map['isDone'] as bool,
+      isDone: map['isDone'] ?? false,
     );
   }
 
@@ -36,4 +36,9 @@ class TodoModel {
 
   factory TodoModel.fromJson(String source) =>
       TodoModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() {
+    return 'TodoModel(id: $id, title: $title, description: $description, isDone: $isDone)';
+  }
 }
