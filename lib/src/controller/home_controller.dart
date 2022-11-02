@@ -7,13 +7,11 @@ class HomeController {
 
   Future<List<TodoModel>> getList() async {
     var response = await repository.getTodoList();
-    print(response);
     return response;
   }
 
   Future<bool> createTodo(TodoModel todo) async {
-    var response = repository.createTodo(todo);
-    print(response);
-    return true;
+    var response = await repository.createTodo(todo);
+    return response;
   }
 }

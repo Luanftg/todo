@@ -24,6 +24,9 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            const SizedBox(
+              height: 50,
+            ),
             TextFormField(
               controller: _titleEditingController,
               decoration: const InputDecoration(
@@ -36,12 +39,13 @@ class _HomePageState extends State<HomePage> {
             ),
             ElevatedButton(
               onPressed: () {
-                _homeController.createTodo(
-                  TodoModel(
-                      title: _titleEditingController.text,
-                      description: _descriptionEditingController.text),
-                );
-                setState(() {});
+                setState(() {
+                  _homeController.createTodo(
+                    TodoModel(
+                        title: _titleEditingController.text,
+                        description: _descriptionEditingController.text),
+                  );
+                });
               },
               child: const Text('Cadastrar'),
             ),
@@ -59,13 +63,27 @@ class _HomePageState extends State<HomePage> {
                         shrinkWrap: true,
                         itemCount: snapshot.data!.length,
                         itemBuilder: (BuildContext context, int index) {
+                          Text todoTitle = Text(snapshot.data![index].title);
+
                           return ListTile(
-                            title: Text(snapshot.data![index].title),
+                            title: todoTitle,
                             subtitle: Text(
                               snapshot.data![index].description,
                             ),
                             trailing: Checkbox(
-                              onChanged: (value) {},
+                              onChanged: (value) {
+                                value = true;
+                                if (value == true) {
+                                  todoTitle.style?.color?.withGreen(240);
+                                } else {
+                                  todoTitle.style?.color?.withGreen(0);
+
+                                  value = false;
+                                }
+                                print('check!');
+                                value = true;
+                                setState(() {});
+                              },
                               value: snapshot.data![index].isDone ?? false,
                             ),
                           );
@@ -73,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                   ];
                 } else if (snapshot.hasError) {
                   children = <Widget>[
-                    const Text("error"),
+                    const Text("Erro ao ler as tarefas!"),
                   ];
                 } else {
                   children = const <Widget>[
@@ -84,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 16),
-                      child: Text('Awaiting result...'),
+                      child: Text('Aguardando Resultado...'),
                     ),
                   ];
                 }
